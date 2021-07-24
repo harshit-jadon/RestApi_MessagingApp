@@ -1,5 +1,6 @@
 package com.springboot.messagingapp.controller;
 
+import com.springboot.messagingapp.model.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,12 +14,16 @@ public class MessagingRestController {
 
     @RequestMapping(value={"/query"}, method = RequestMethod.GET)
     public String sayHello(@RequestParam(value="name")String name){
-        return "Hello" + name +"from Bridgelabz....";
+        return "Hello " + name +" from Bridgelabz....";
     }
 
     @GetMapping("/param/{name}")
     public String sayHelloParam(@PathVariable String name){
-        return "Hello"+ name +"from BridgeLabz";
+        return "Hello "+ name +" from BridgeLabz";
     }
 
+    @PostMapping("/post")
+    public String sayHell0(@RequestBody User user){
+        return "Hello" + user.getFirstName()+ " "+user.getLastName()+" "+" from BridgeLabz";
+    }
 }
